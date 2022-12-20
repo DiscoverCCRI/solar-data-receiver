@@ -1,4 +1,4 @@
-from mqtt_solar_save import DataReceiver
+from mqtt_solar_receive import DataReceiver
 
 def main():
     # Init vars

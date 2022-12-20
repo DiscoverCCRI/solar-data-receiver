@@ -1,12 +1,14 @@
 from network import Network
 import logging
 import json
-from datetime import datetime, timezone
+from datetime import datetime
 import os.path
 
 ### To enable debug logging, uncomment the line below
 logging.basicConfig(level=logging.DEBUG)
 
+VALID_DATA_SOURCES = ['device', 'state']
+VALID_DEVICE_NAMES = ['ccrisolar1', 'ccrisolar2']
 
 # Define callback function for MQTT message callback
 def on_message(client, userdata, message):
@@ -31,17 +33,6 @@ def outputToJSON(dataToAdd, fileName):
         except FileNotFoundError:
             print(f"[+] Creating {dataDir+fileName}...")
             jsonFile = open(dataDir+fileName, "w")
-    
-    # else:
-    #     try:
-    #         # Open the existing file
-    #         jsonFile = open(fileName, "r+")
-    #         jsonData = json.load(jsonFile)
-        
-    #     except FileNotFoundError:
-    #         print(f"[-] Volume directory {volumeDir} not found. Did you mount a volume?")
-    #         print(f"[+] Storing output to root, creating {fileName}...")
-    #         jsonFile = open(fileName, "w")
     
     # At this point it can be assumed that the data file exists, so we can read from and add to it.
     jsonData.append(dataToAdd)
@@ -84,6 +75,15 @@ class DataReceiver:
                 # Use topic to find/create appropriate file to save data
                 device_name = received_topic.split("/")[1]
                 data_source = received_topic.split("/")[2]
+
+                # Since this is running on 1883, we want to validate the incoming message topics
+                # as an extra precaution
+                if device_name not in VALID_DEVICE_NAMES:
+                    raise Exception("[-] Invalid device name in topic, skipping...\n")
+
+                if data_source not in VALID_DATA_SOURCES:
+                    raise Exception("[-] Invalid data source in topic, skipping...\n")
+
                 file_name = device_name + '-' + data_source + '-data.json'
 
                 # Convert received payload into a dictionary
@@ -94,6 +94,6 @@ class DataReceiver:
                 logging.debug(f"[+] Data to be inserted into {file_name}: {json_payload}\n")
                 outputToJSON(json_payload, file_name)
             
-            except KeyError as error:
-                logging.debug("[-] Invalid data")
+            except Exception as error_message:
+                logging.debug(error_message)
                 continue
