@@ -6,7 +6,7 @@ Description=MQTT Solar Data Receiver
 Type=simple
 WorkingDirectory=/home/supervisor/solar-data-receiver
 ExecStart=/home/supervisor/solar-data-receiver/systemctl_files/mqtt_mongo_insert.sh
-User=ioteam
+User=supervisor
 
 [Install]
 WantedBy=multi-user.target
