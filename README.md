@@ -23,7 +23,7 @@ This application is intended to run as a background service. This means that sys
 
 `sudo systemctl status mqtt_solar_receive.service`
 
-The output logs of the mqtt_solar_receive service is located in the logs/ directory. A new log file is generated when the service is reset and will be labelled with the current date. An example log file may be named: `mqtt_solar_receive-20221020.log`
+The output logs of the mqtt_solar_receive service is located in the logs/ directory. A new log file is generated when the service is reset and will be labelled with the current date. An example log file may be named: `mqtt_solar_receive-20221220.log`
 
 ## Viewing the saved data
 This application is designed to only save data from the following set of topics:
