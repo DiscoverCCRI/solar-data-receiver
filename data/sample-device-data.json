@@ -1,0 +1,14 @@
+[
+    {
+        "controllerV": 12,
+        "controllerC": 30,
+        "controllerDischgC": 20,
+        "controllerType": "Controller",
+        "controllerModel": " RNG-CTRL-WND30",
+        "softwareVersion": "V1.0.4",
+        "hardwareVersion": "V1.0.3",
+        "serialNumber": 1116960,
+        "controllerAddress": 1,
+        "timestamp": "2022-12-20 14:32:24"
+    }
+]

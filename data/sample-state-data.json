@@ -1,0 +1,29 @@
+[
+    {
+        "battCap": 96,
+        "battV": "13.10",
+        "battC": "2.12",
+        "battT": 24,
+        "controlT": 18,
+        "loadV": "0.00",
+        "loadC": "0.00",
+        "loadP": 0,
+        "solarV": "13.10",
+        "solarC": "2.12",
+        "solarP": 27,
+        "battVMinToday": "12.10",
+        "battVMaxToday": "13.40",
+        "chgCMaxToday": "3.51",
+        "dischgCMaxToday": "0.00",
+        "chgPMaxToday": "46.00",
+        "dischgPMaxToday": "0.00",
+        "chgAHToday": "4.00",
+        "dischgAHToday": "0.00",
+        "chgWHToday": "50.00",
+        "dischgWHToday": "0.00",
+        "uptime": 15,
+        "totalBattOvercharge": 9,
+        "totalBattFullCharges": 3,
+        "timestamp": "2022-12-20 14:31:47"
+    }
+]
