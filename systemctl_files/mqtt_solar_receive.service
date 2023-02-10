@@ -1,5 +1,5 @@
 [Unit]
-After=network.service
+After=network.service mosquitto.service
 Description=MQTT Solar Data Receiver
 
 [Service]
